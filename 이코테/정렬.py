@@ -1,21 +1,22 @@
-def bfs(x, y):
-    queue = deque()
-    queue.append((x, y))
-    while queue:
-        x, y = queue.popleft()
+# 선택정렬
+array = [7, 5, 9, 0, 3, 1, 6, 2, 4, 8]
 
-        for i in range(4):
-            nx = x + dx[i]
-            ny = y + dy[i]
+for i in range(len(array)):
+    min_index = i
+    for j in range(i+1, len(array)):
+        if array[min_index] > array[j]:
+            min_index = j
+    array[i], array[min_index] = array[min_index], array[i]
 
-            if nx < 0 or nx >= n or ny < 0 or ny >= m:
-                continue
-            if graph[nx][ny] == 0:
-                continue
-            if graph[nx][ny] == 1:
-                graph[nx][ny] = graph[x][y] + 1
-                queue.append((nx, ny))
-    return graph[n-1][m-1]
+print(array)
 
+# 삽입정렬
+array = [7, 5, 9, 0, 3, 1, 6, 2, 4, 8]
 
-print(bfs(0, 0))
+for i in range(1, len(array)):
+    for j in range(i, 0, -1):
+        if array[j] < array[j-1]:
+            array[j], array[j-1] = array[j-1], array[j]
+        else:
+            break
+print(array)
